@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <video src="video.mp4" type="video/mp4" controls id="video"></video>
+        <div class="container2" id="container2">
+            <div class="data">
+                <p class="songname">Blue Eyes</p>
+                <p>a legendary song by</p>
+                <p>Yo Yo Honey Singh</p>
+            </div>
+            <button class="play-pause-button" id="play-pause-button">&#9658;</button>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+const video = document.getElementById("video");
+const playPauseButton = document.getElementById("play-pause-button");
+
+playPauseButton.addEventListener("click", function () {
+    if (video.paused) {
+        video.play();
+        playPauseButton.innerHTML = "&#10074;&#10074;"; // Change to pause icon
+    } else {
+        video.pause();
+        playPauseButton.innerHTML = "&#9658;"; // Change to play icon
+    }
+});
+
+video.addEventListener("timeupdate", function () {
+    const progress = (video.currentTime / video.duration) * 100;
+    const progressBar = document.querySelector(".progress");
+    progressBar.style.width = progress + "%";
+});
+</script>
+</body>
+
+</html>
